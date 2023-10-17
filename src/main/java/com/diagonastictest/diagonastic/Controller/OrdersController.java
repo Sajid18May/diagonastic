@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diagonastictest.diagonastic.Entity.Orders;
-import com.diagonastictest.diagonastic.Service.PatientsService;
+import com.diagonastictest.diagonastic.Service.OrdersService;
 
 @RestController
 public class OrdersController {
     
     @Autowired
-    PatientsService o;
+    OrdersService o;
 
     @PostMapping("/addOrder")
     public Orders addOrder(@RequestBody Orders orders){
