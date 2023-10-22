@@ -1,10 +1,16 @@
 package com.diagonastictest.diagonastic.Service;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.diagonastictest.diagonastic.Entity.DiagnosticTests;
 import com.diagonastictest.diagonastic.Repo.DRepo;
 
+@Service
 public class DiagnosticTestsService {
     @Autowired
     DRepo drep;
@@ -12,6 +18,60 @@ public class DiagnosticTestsService {
 
         return drep.save(diagnosticTests);
     }
+
+       	public List<DiagnosticTests> fetchAllDiagnosticTests() {	
+		return drep.findAll();
+	}
+
+	public DiagnosticTests getDiagnosticTestsById(int id) {
+		Optional<DiagnosticTests> diagonastictest = drep.findById(id);
+
+		if (diagonastictest.isPresent()) {
+			return diagonastictest.get();
+		}
+		return null;
+	}
+
+	
+	public String deleteDiagnosticTestsById(int id) {
+		if(drep.findById(id).isPresent()) {
+			drep.deleteById(id);
+			return "diagonastictest deleted successfully";
+		}
+		return "No such diagonastictest in the database";
+	}
+
+    public DiagnosticTests upadteDiagnosticTestsById(int id, DiagnosticTests diagonastictest) {
+		Optional<DiagnosticTests> diagonastictest1 = drep.findById(id);
+		
+		if (diagonastictest1.isPresent()) {
+			
+			DiagnosticTests originaldiagonastictest = diagonastictest1.get();
+			
+			 if (Objects.nonNull(diagonastictest.getTest_name()) && !"".equalsIgnoreCase(diagonastictest.getTest_name())) {
+				 originaldiagonastictest.setTest_name(diagonastictest.getTest_name());
+	            }
+			 if (Objects.nonNull(diagonastictest.getDescription()) && !"".equalsIgnoreCase(diagonastictest.getDescription())) {
+				 originaldiagonastictest.setDescription(diagonastictest.getDescription());
+	            }
+             if (Objects.nonNull(diagonastictest.getPrice())) {
+				 originaldiagonastictest.setPrice(diagonastictest.getPrice());
+	            }
+			 
+			 if (Objects.nonNull(diagonastictest.getSample_type()) && !"".equalsIgnoreCase(diagonastictest.getSample_type())) {
+				 originaldiagonastictest.setSample_type(diagonastictest.getSample_type());
+	            }
+			 
+			 if (Objects.nonNull(diagonastictest.getProcessing_time()) && !"".equalsIgnoreCase(diagonastictest.getProcessing_time())) {
+				 originaldiagonastictest.setProcessing_time(diagonastictest.getProcessing_time());
+	            }
+			
+	            return drep.save(originaldiagonastictest);
+			
+		}
+
+		return null;
+	}
 
 
 }
