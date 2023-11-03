@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Welcome to ExpressTest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="" th:src=@{images/icon.svg} class="bi me-2" width="40" height="32"/>
+            <span class="fs-4"><strong>ExpressTest</strong></span>
+          </a>
+    
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="" th:href=@{homepage} class="nav-link" >Home</a></li>
+            <li class="nav-item"><a href="" th:href=@{order} class="nav-link active" aria-current="page">Orders</a></li>
+            <li class="nav-item"><a href="" th:href=@{test} class="nav-link">Tests</a></li>
+            <li class="nav-item"><a href="" th:href=@{about} class="nav-link">About</a></li>
+          </ul>
+        </header>
+      </div>
+
+      <table class="table container">
+        <thead>
+          <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Result</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr th:each="Orders : ${dataList}">
+            <th scope="row" th:text="${Orders.order_id}"></th>
+            <td th:text="${Orders.order_date}"></td>
+            <td th:text="${Orders.results}"></td>
+            <td th:text="${Orders.status}"></td>
+      
+        </tbody>
+      </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+       
+</body>
+</html>

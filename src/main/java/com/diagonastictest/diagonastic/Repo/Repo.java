@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.diagonastictest.diagonastic.Entity.Patients;
 
+
 @Repository
 public interface Repo extends JpaRepository<Patients,Integer>{
-
+    Patients findByEmailAndPassword(String email, String password);
 }

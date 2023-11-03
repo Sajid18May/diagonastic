@@ -2,6 +2,8 @@ package com.diagonastictest.diagonastic.Entity;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +27,7 @@ private String first_name;
 private String last_name;
 private String email;
 private String password ;
+@DateTimeFormat(pattern = "yy-MM-dd")
 private Date date_of_birth;
 private String gender;
 private String address;

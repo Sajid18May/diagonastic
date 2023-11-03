@@ -15,9 +15,8 @@ public class DiagnosticTests {
 @Id
 private int test_id;
 private String test_name;
-private String description;
-private double price;
-private String sample_type;
+private String lab_name;
+private String price;
 private String processing_time;
 
 @OneToMany(cascade = CascadeType.ALL)

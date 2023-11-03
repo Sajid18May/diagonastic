@@ -51,15 +51,11 @@ public class DiagnosticTestsService {
 			 if (Objects.nonNull(diagonastictest.getTest_name()) && !"".equalsIgnoreCase(diagonastictest.getTest_name())) {
 				 originaldiagonastictest.setTest_name(diagonastictest.getTest_name());
 	            }
-			 if (Objects.nonNull(diagonastictest.getDescription()) && !"".equalsIgnoreCase(diagonastictest.getDescription())) {
-				 originaldiagonastictest.setDescription(diagonastictest.getDescription());
+			 if (Objects.nonNull(diagonastictest.getLab_name()) && !"".equalsIgnoreCase(diagonastictest.getLab_name())) {
+				 originaldiagonastictest.setLab_name(diagonastictest.getLab_name());
 	            }
              if (Objects.nonNull(diagonastictest.getPrice())) {
 				 originaldiagonastictest.setPrice(diagonastictest.getPrice());
-	            }
-			 
-			 if (Objects.nonNull(diagonastictest.getSample_type()) && !"".equalsIgnoreCase(diagonastictest.getSample_type())) {
-				 originaldiagonastictest.setSample_type(diagonastictest.getSample_type());
 	            }
 			 
 			 if (Objects.nonNull(diagonastictest.getProcessing_time()) && !"".equalsIgnoreCase(diagonastictest.getProcessing_time())) {
