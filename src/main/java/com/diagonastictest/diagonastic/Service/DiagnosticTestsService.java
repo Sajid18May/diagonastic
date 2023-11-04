@@ -54,9 +54,6 @@ public class DiagnosticTestsService {
 			 if (Objects.nonNull(diagonastictest.getLab_name()) && !"".equalsIgnoreCase(diagonastictest.getLab_name())) {
 				 originaldiagonastictest.setLab_name(diagonastictest.getLab_name());
 	            }
-             if (Objects.nonNull(diagonastictest.getPrice())) {
-				 originaldiagonastictest.setPrice(diagonastictest.getPrice());
-	            }
 			 
 			 if (Objects.nonNull(diagonastictest.getProcessing_time()) && !"".equalsIgnoreCase(diagonastictest.getProcessing_time())) {
 				 originaldiagonastictest.setProcessing_time(diagonastictest.getProcessing_time());

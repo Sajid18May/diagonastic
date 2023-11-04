@@ -15,13 +15,11 @@ public class homeController {
 		return "index";
 	}
 		
-	/*@GetMapping("/test")
+	@GetMapping("/test")
 	public String test(Model model){
-		//model.addAttribute("log_in", new Patients());
-		DiagnosticTests d1=new DiagnosticTests();
-		model.addAttribute("testform", d1);
+		model.addAttribute("testform", new DiagnosticTests());
 		return "test";
-	}*/	
+	}
 	@GetMapping("/about")
 	public String about(){
 		return "about";

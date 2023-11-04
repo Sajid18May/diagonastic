@@ -68,9 +68,9 @@ public class PatientsService {
 
 		return null;
 	}
-	public Patients getByEmailAndPassword(String email, String password){
+	public Patients getByEmail(String email){
 
-		return myrepo.findByEmailAndPassword(email,password);
-	};
+		return myrepo.findByEmail(email);
+	}
 
 }

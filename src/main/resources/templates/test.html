@@ -23,15 +23,15 @@
           </ul>
         </header>
       </div>
-
+      <h3 class="container">Start Booking Your Test</h3>
       <form class="container" th:action="@{getTested}" method="post" th:object="${testform}">
         <div class="form-group">
 
-        <h3 th:object="${log_in}" th:text="|Welcome, ${log_in.first_name} ${log_in.last_name}|"></h3>
+
 
         <div class="form-group">
           <label for="exampleFormControlSelect1">Select Lab</label>
-          <select  th:object="${testform}" th:field="*{testform.lab_name}" class="form-select" id="lab_name"/>
+          <select th:field="*{lab_name}" class="form-select" id="lab_name"/>
             <option>Select..Lab</option>
             <option>Lab-1</option>
             <option>Lab-2</option>
@@ -43,7 +43,7 @@
 
         <div class="form-group">
           <label for="exampleFormControlSelect1">Select Test</label>
-          <select  class="form-select" id="test_name"/>
+          <select th:field="*{test_name}" class="form-select" id="test_name"/>
             <option>Select..Test</option>
             <option>test-1</option>
             <option>test-2</option>
@@ -55,18 +55,12 @@
 
         <div class="form-group">
           <label for="exampleFormControlSelect1">Processing Time</label>
-          <select  class="form-select" id="processing_time"/>
+          <select th:field="*{processing_time}" class="form-select" id="processing_time"/>
             <option>Select..Delivery Option</option>
             <option>Regular - 7 Days</option>
             <option>ExpressPass - 3 Days</option>
           </select>
         </div>
-
-        <div class="form-group">
-          <label for="price" class="form-label">Price</label>
-          <input  type="text" class="form-control" id="price" placeholder="500" required="" disabled>
-        </div>
-        
         
         <div class="mb-3">
           <label for="formFileMultiple" class="form-label">Upload your Prescription</label>

@@ -15,11 +15,13 @@ public class loginController {
     PatientsService ps;
     
     @PostMapping("/log_in")
-    public String login(Model model,String email, String password){
-          Patients p1=ps.getByEmailAndPassword(email,password);
-          model.addAttribute("log_in", p1);
-		  model.addAttribute("testform", new DiagnosticTests());
-        return "test";
+    public String login(Model model, String email, String password){
+        model.addAttribute("testform", new DiagnosticTests());
+         Patients p1=ps.getByEmail(email);
+        if(p1!=null && p1.getPassword().equals(password)){
+            return "test"; 
+        }
+        return "login";    
     }
    
     @PostMapping("/register")
