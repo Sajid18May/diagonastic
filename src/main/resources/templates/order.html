@@ -17,7 +17,7 @@
           <ul class="nav nav-pills">
             <li class="nav-item"><a href="" th:href=@{homepage} class="nav-link" >Home</a></li>
             <li class="nav-item"><a href="" th:href=@{order} class="nav-link active" aria-current="page">Orders</a></li>
-            <li class="nav-item"><a href="" th:href=@{test} class="nav-link">Tests</a></li>
+            <li class="nav-item"><a href="" th:href=@{login} class="nav-link">Tests</a></li>
             <li class="nav-item"><a href="" th:href=@{about} class="nav-link">About</a></li>
           </ul>
         </header>
@@ -34,11 +34,11 @@
         </thead>
         <tbody>
           
-          <tr th:each="Orders : ${dataList}">
-            <th scope="row" th:text="${Orders.order_id}"></th>
-            <td th:text="${Orders.order_date}"></td>
-            <td th:text="${Orders.results}"></td>
-            <td th:text="${Orders.status}"></td>
+          <tr th:each="DiagnosticTests : ${dataList}">
+            <th scope="row" th:text="${DiagnosticTests.test_name}"></th>
+            <td th:text="${DiagnosticTests.lab_name}"></td>
+            <td th:text="${DiagnosticTests.processing_time}"></td>
+            <td th:text="${DiagnosticTests.order_date}"></td>
       
         </tbody>
       </table>

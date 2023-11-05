@@ -17,7 +17,7 @@
           <ul class="nav nav-pills">
             <li class="nav-item"><a href="" th:href=@{homepage} class="nav-link" >Home</a></li>
             <li class="nav-item"><a href="" th:href=@{order} class="nav-link active" aria-current="page">Orders</a></li>
-            <li class="nav-item"><a href="" th:href=@{test} class="nav-link">Tests</a></li>
+            <li class="nav-item"><a href="" th:href=@{login} class="nav-link">Tests</a></li>
             <li class="nav-item"><a href="" th:href=@{about} class="nav-link">About</a></li>
           </ul>
         </header>
@@ -36,11 +36,11 @@
             </div>
             <div class="col-md-7 col-lg-8">
               <h4 class="mb-3">Get Started</h4>
-              <form th:action="@{register}" method="post" th:object="${patient}" class="needs-validation" novalidate="">
+              <form th:action="@{register}" method="post" th:object="${patient}" class="needs-validation" >
                 <div class="row g-3">
                   <div class="col-sm-6">
                     <label for="firstName" class="form-label">First name</label>
-                    <input type="text" th:field="*{first_name}" class="form-control" id="firstName" placeholder="" value="" required="">
+                    <input type="text" th:field="*{first_name}" class="form-control" id="firstName" required/>
                     <div class="invalid-feedback">
                       Valid first name is required.
                     </div>
@@ -48,7 +48,7 @@
       
                   <div class="col-sm-6">
                     <label for="lastName" class="form-label">Last name</label>
-                    <input type="text" th:field="*{last_name}" class="form-control" id="lastName" placeholder="" value="" required="">
+                    <input type="text" th:field="*{last_name}" class="form-control" id="lastName" required/>
                     <div class="invalid-feedback">
                       Valid last name is required.
                     </div>

@@ -23,15 +23,15 @@
           </ul>
         </header>
       </div>
-      <h3 class="container">Start Booking Your Test</h3>
-      <form class="container" th:action="@{getTested}" method="post" th:object="${testform}">
+      <h3 class="container" th:text="'Welcome, '+${user.first_name}+' '+${user.last_name}">Start Booking Your Test</h3>
+      <form class="container" th:action="@{/getTested}" method="post" th:object="${user}" >
         <div class="form-group">
 
 
 
         <div class="form-group">
           <label for="exampleFormControlSelect1">Select Lab</label>
-          <select th:field="*{lab_name}" class="form-select" id="lab_name"/>
+          <select name="lab_name" class="form-select" id="lab_name"/>
             <option>Select..Lab</option>
             <option>Lab-1</option>
             <option>Lab-2</option>
@@ -43,7 +43,7 @@
 
         <div class="form-group">
           <label for="exampleFormControlSelect1">Select Test</label>
-          <select th:field="*{test_name}" class="form-select" id="test_name"/>
+          <select name="test_name" class="form-select" id="test_name"/>
             <option>Select..Test</option>
             <option>test-1</option>
             <option>test-2</option>
@@ -55,7 +55,7 @@
 
         <div class="form-group">
           <label for="exampleFormControlSelect1">Processing Time</label>
-          <select th:field="*{processing_time}" class="form-select" id="processing_time"/>
+          <select name="processing_time" class="form-select" id="processing_time"/>
             <option>Select..Delivery Option</option>
             <option>Regular - 7 Days</option>
             <option>ExpressPass - 3 Days</option>
@@ -66,6 +66,19 @@
           <label for="formFileMultiple" class="form-label">Upload your Prescription</label>
           <input class="form-control" type="file" id="formFileMultiple" multiple>
         </div>
+
+        <div class="form-group">
+          <input class="form-control" type="hidden" name="patients" th:value="${user.patient_id}" id="user_id"  >
+          <div class="invalid-feedback">
+            Valid last name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Processing Time</label>
+          <input type="date" name="order_date" class="form-control" id="processing_time">
+        </div>
+        
 
         <button class="w-100 btn btn-primary btn-lg mt-5" type="submit">Get Tested</button>
         

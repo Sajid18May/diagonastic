@@ -1,14 +1,15 @@
 package com.diagonastictest.diagonastic.Entity;
 
-import java.util.List;
+import java.util.Date;
 
-import jakarta.persistence.CascadeType;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity
@@ -20,8 +21,10 @@ private int test_id;
 private String test_name;
 private String lab_name;
 private String processing_time;
+@DateTimeFormat(pattern = "yy-MM-dd")
+private Date order_date;
 
-@OneToMany(cascade = CascadeType.ALL)
-@JoinColumn(name = "test_id", referencedColumnName="test_id")
-List <Orders> orders;
+@ManyToOne
+@JoinColumn(name ="patient_id")
+private Patients patients;
 }
