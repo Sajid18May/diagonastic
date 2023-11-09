@@ -45,4 +45,11 @@ public class DTWController {
         model.addAttribute("dataList", data);
         return "order"; 
     }
+
+    @GetMapping("/admin")
+	public String admin(Model model){
+		List <DiagnosticTests> data = ds.fetchAllDiagnosticTests() ;
+        model.addAttribute("dataList", data);
+		return "admin";
+	}
 }
