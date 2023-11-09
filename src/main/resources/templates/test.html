@@ -20,11 +20,20 @@
             <li class="nav-item"><a href="" th:href=@{order} class="nav-link" >Orders</a></li>
             <li class="nav-item"><a href="" th:href=@{test} class="nav-link active" aria-current="page">Tests</a></li>
             <li class="nav-item"><a href="" th:href=@{about} class="nav-link">About</a></li>
+            <li th:if="${session.cust!=''}" th:text="${session.cust}" class="nav-item nav-link">User</a></li>
+            <div class="dropdown text-end">
+              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" height="2.25em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#005eff}</style><path d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/></svg>
+              </a>
+              <ul class="dropdown-menu text-small" >
+                <li><a class="dropdown-item" th:href="@{signout}">Sign out</a></li>
+              </ul>
+             </div>
           </ul>
         </header>
       </div>
       <h3 class="container" th:text="'Welcome, '+${user.first_name}+' '+${user.last_name}">Start Booking Your Test</h3>
-      <form class="container" th:action="@{/getTested}" method="post" th:object="${user}" >
+      <form class="container" th:action="@{/getTested}" method="post" th:object="${user}" enctype="multipart/form-data">
         <div class="form-group">
 
 
@@ -69,7 +78,7 @@
         
         <div class="mb-3">
           <label for="formFileMultiple" class="form-label">Upload your Prescription</label>
-          <input class="form-control" type="file" id="formFileMultiple" multiple>
+          <input class="form-control" type="file" name="file" id="formFileMultiple">
         </div>
 
         <div class="form-group">
@@ -80,8 +89,8 @@
         </div>
 
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Processing Time</label>
-          <input type="date" name="order_date" class="form-control" id="processing_time">
+          <label for="exampleFormControlSelect1">Order Date</label>
+          <input type="date" name="order_date" class="form-control" id="order_date">
         </div>
         
 

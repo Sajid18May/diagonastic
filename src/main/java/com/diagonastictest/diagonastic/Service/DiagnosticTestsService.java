@@ -1,13 +1,19 @@
 package com.diagonastictest.diagonastic.Service;
 
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.diagonastictest.diagonastic.Entity.DiagnosticTests;
+import com.diagonastictest.diagonastic.Entity.Patients;
 import com.diagonastictest.diagonastic.Repo.DRepo;
 
 @Service
@@ -64,6 +70,29 @@ public class DiagnosticTestsService {
 		}
 
 		return null;
+	}
+
+	public void saveDiagnosticTestsToDB(MultipartFile file,String test_name,String lab_name
+			,String processing_time,Date order_date,Patients patients)
+	{
+		DiagnosticTests testinfo = new DiagnosticTests();
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		if(fileName.contains(".."))
+		{
+			System.out.println("not a a valid file");
+		}
+		try {
+			testinfo.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		testinfo.setTest_name(test_name);
+		testinfo.setLab_name(lab_name);
+		testinfo.setProcessing_time(processing_time);
+		testinfo.setOrder_date(order_date);
+		testinfo.setPatients(patients);
+        
+        drep.save(testinfo);
 	}
 
 
