@@ -49,7 +49,7 @@ public class loginController {
         }
 
         ps.addPatients(userDto);
-        return "redirect:/homepage";
+        return "redirect:/login";
     }
 
 
