@@ -33,10 +33,10 @@ public class loginController {
     }
    
     @PostMapping("/register")
-    public String registration(@Valid @ModelAttribute("patient") Patients userDto,
+    public String registration(@Valid @ModelAttribute("patient") Patients patients,
                                BindingResult result,
                                Model model){
-        Patients existingUser = ps.getByEmail(userDto.getEmail());
+        Patients existingUser = ps.getByEmail(patients.getEmail());
 
         if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
             result.rejectValue("email", null,
@@ -44,11 +44,11 @@ public class loginController {
         }
 
         if(result.hasErrors()){
-            model.addAttribute("patient", userDto);
+            model.addAttribute("patient", patients);
             return "/signup";
         }
 
-        ps.addPatients(userDto);
+        ps.addPatients(patients);
         return "redirect:/login";
     }
 
